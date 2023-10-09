@@ -27,11 +27,11 @@ const AddPaymentStep2 = () => {
     console.log(studentData)
  */
     return (
-        <Fragment>
-            <PDFViewer width="1000" height="600" className="app" >
+        <>
+            <PDFViewer width="100%" height="900" className="app" >
                 <Invoice studentData={studentData}/>
             </PDFViewer>
-        </Fragment>
+        </>
     );
 }
 

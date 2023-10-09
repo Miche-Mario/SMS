@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         marginTop: 36
     },
     billTo: {
-        marginTop: 20,
+        marginTop: 0,
         paddingBottom: 3,
         fontFamily: 'Helvetica-Oblique'
     }, 

@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         alignItems: 'center',
         height: 24,
-        fontSize: 12,
+        fontSize: 10,
         fontStyle: 'bold',
     },
     description: {

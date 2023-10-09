@@ -288,7 +288,7 @@ POST http://localhost:5001/timee
 Content-Type:  application/json
 
 {
-    "time": 3
+    "time": 2
 }
 
 ###

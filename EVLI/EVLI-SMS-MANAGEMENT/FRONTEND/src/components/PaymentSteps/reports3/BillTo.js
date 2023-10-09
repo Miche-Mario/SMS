@@ -4,10 +4,10 @@ import logo from '../../../assets/logoo.png'
 
 const styles = StyleSheet.create({
     headerContainer: {
-        marginTop: 36
+        marginTop: 0
     },
     billTo: {
-        marginTop: 20,
+        marginTop: 0,
         paddingBottom: 3,
         fontFamily: 'Helvetica-Oblique'
     }, 

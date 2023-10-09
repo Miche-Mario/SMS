@@ -324,7 +324,7 @@ const StudentPayment = () => {
                     </tr>
                     <tr>
                       <td colspan="3" className="text-right">Total:</td>
-                      <td className='font-bold'> {code.invoice && code.invoice.currency.lecurrency && code.invoice.currency.lecurrency} {code.invoice.total && separator(code.invoice.total)}</td>
+                      <td className='font-bold'> {code.invoice && code.invoice.currency.lecurrency && code.invoice.currency.lecurrency} {code.total && separator(code.total)}</td>
                     </tr>
                     {code.invoice &&
                         code.timepayment.map((timep, index) => (
@@ -426,7 +426,7 @@ const StudentPayment = () => {
                                     </thead>
                                     <tbody className="text-gray-600  text-sm font-light">
 
-                                        {payments && 
+                                        {payments.length > 0 &&  
                                             payments.map((pay, index) => (
                                                 <tr key={pay.uuid} className="border-b border-gray-200  hover:bg-gray-100">
                                                     <td className=" py-3 px-3 text-center whitespace-nowrap">
@@ -450,23 +450,23 @@ const StudentPayment = () => {
                                                     </td>
                                                     <td className=" py-3 px-3 text-center">
                                                         <div className="flex items-center justify-center">
-                                                            <span className={`font-medium rounded-lg p-1 text-white ${pay.balance == 0 ? " bg-green-600" : " bg-red"}`}>{pay.invoice.currency.lecurrency} {separator(pay.total)}</span>
+                                                            <span className={`font-medium rounded-lg p-1 text-white ${pay.balance == 0 ? " bg-green-600" : " bg-red"}`}>{pay.invoice.currency.lecurrency} { pay.total && separator(pay.total)}</span>
                                                         </div>
                                                     </td>
                                                    
                                                     <td className=" py-3 px-3 text-center">
                                                         <div className="flex items-center justify-center">
-                                                            <span className={`font-medium rounded-lg p-1 text-white ${pay.balance == 0 ? " bg-green-600" : " bg-red"}`}>{pay.invoice.currency.lecurrency} {separator(pay.first)}</span>
+                                                            <span className={`font-medium rounded-lg p-1 text-white ${pay.balance == 0 ? " bg-green-600" : " bg-red"}`}>{pay.invoice.currency.lecurrency} {pay.first && separator(pay.first)}</span>
                                                         </div>
                                                     </td>
                                                     <td className=" py-3 px-3 text-center">
                                                         <div className="flex items-center justify-center">
-                                                        {pay.second &&  <span className={`font-medium rounded-lg p-1 text-white ${pay.balance == 0 ? " bg-green-600" : " bg-red"}`}>{pay.invoice.currency.lecurrency} {separator(pay.second)}</span>}
+                                                        {pay.second &&  <span className={`font-medium rounded-lg p-1 text-white ${pay.balance == 0 ? " bg-green-600" : " bg-red"}`}>{pay.invoice.currency.lecurrency} { pay.second && separator(pay.second)}</span>}
                                                         </div>
                                                     </td>
                                                     <td className=" py-3 px-3 text-center">
                                                         <div className="flex items-center justify-center">
-                                                            <span className={`font-medium rounded-lg p-1 text-white ${pay.balance == 0 ? " bg-green-600" : " bg-red"}`}>{pay.invoice.currency.lecurrency} {separator(pay.balance)}</span>
+                                                            <span className={`font-medium rounded-lg p-1 text-white ${pay.balance == 0 ? " bg-green-600" : " bg-red"}`}>{pay.invoice.currency.lecurrency} {pay.balance && separator(pay.balance)}</span>
                                                         </div>
                                                     </td>
                                                     <td className=" py-3 px-3 text-center">

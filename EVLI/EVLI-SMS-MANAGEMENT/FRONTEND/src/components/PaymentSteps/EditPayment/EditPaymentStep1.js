@@ -250,7 +250,7 @@ const updatePayment = async (e) => {
                     }
 
                     {
-                      invoicedatatrue && invoicedata.examlist.length >= 0 && invoicedata.examlist.map((exam, index) => (
+                      invoicedata && invoicedata.examlist.length >= 0 && invoicedata.examlist.map((exam, index) => (
                         <tr key={index * (Math.random() * 3)}>
                           <td>1</td>
                           <td>{exam.examdescription}</td>
@@ -262,9 +262,9 @@ const updatePayment = async (e) => {
                     }
 
                     {
-                      invoicedatatrue && invoicedata.purchaselist.length >= 0 && invoicedata.purchaselist.map((pur, index) => (
+                      invoicedata && invoicedata.purchaselist.length >= 0 && invoicedata.purchaselist.map((pur, index) => (
                         <tr key={index * (Math.random() * 3)}>
-                          <td>1</td>
+                          <td>{pur.purchasetimes}</td>
                           <td>{pur.purchasedescription}</td>
                           <td>{pur.lecurrency} {separator(pur.purchaseprice)}</td>
                           <td>{pur.lecurrency} {separator(pur.purchaseprice)}</td>
@@ -273,7 +273,7 @@ const updatePayment = async (e) => {
 
                     }
                     {
-                      invoicedatatrue && invoicedata.accolist.length >= 0 && invoicedata.accolist.map((acco, index) => (
+                      invoicedata && invoicedata.accolist.length >= 0 && invoicedata.accolist.map((acco, index) => (
                         <tr key={index * (Math.random() * 3)}>
                           <td>{acco.acotimes}</td>
                           <td>{acco.accodescription}</td>
@@ -285,7 +285,7 @@ const updatePayment = async (e) => {
                     }
 
                     {
-                      invoicedatatrue && invoicedata.otherlist.length >= 0 && invoicedata.otherlist.map((other, index) => (
+                      invoicedata && invoicedata.otherlist.length >= 0 && invoicedata.otherlist.map((other, index) => (
                         <tr key={index * (Math.random() * 3)}>
                           <td>1</td>
                           <td>{other.otherfeedescription}</td>
@@ -306,7 +306,7 @@ const updatePayment = async (e) => {
                     </tr>
                     <tr>
                       <td colspan="3" className="text-right">Total:</td>
-                      <td className='font-bold'> {invoicedata && invoicedata.currency.lecurrency} { invoicedata &&  separator(invoicedata.total)}</td>
+                      <td className='font-bold'> {invoicedata && invoicedata.currency.lecurrency} { paymentdata &&  separator(paymentdata.total && paymentdata.total)}</td>
                     </tr>
                     {paymentdata &&
                         paymentdata.timepayment.map((timep, index) => (

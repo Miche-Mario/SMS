@@ -139,7 +139,7 @@ const Logs = () => {
                                 <div className='flex items-center justify-between mt-5 mb-3'>
                                 <div className='flex items-center'>
                                     <p className=' bg-green-600 mr-4 rounded-full p-1'></p>
-                                    <p className=' font-bold text-gray-900 mr-5 text-xl italic'>{Moment(item.date).format('YYYY-MM-DD')}:</p>
+                                    <p className=' font-bold text-gray-900 mr-5 text-xl italic'>{Moment(item.date).format('YYYY-MM-DD,, h:mm:ss a')}:</p>
                                     <p className=' font-bold text-gray-900 mr-5 text-lg'>{item.user.username}</p>
                                     <p className=' font-bold text-green-900 mr-5 text-lg'>{item.info}</p>
                                 </div>

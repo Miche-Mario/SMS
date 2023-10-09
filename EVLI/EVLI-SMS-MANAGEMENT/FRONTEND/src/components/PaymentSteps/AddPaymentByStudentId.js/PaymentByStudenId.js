@@ -240,10 +240,10 @@ useEffect(() => {
                     {
                       studentData && studentData.purchaseList.length >= 0 && studentData.purchaseList.map((pur, index) => (
                         <tr key={index * (Math.random() * 3)}>
-                          <td>1</td>
+                          <td>{pur.purchasetimes}</td>
                           <td>{pur.purchasedescription}</td>
                           <td>{pur.lecurrency} {separator(pur.purchaseprice)}</td>
-                          <td>{pur.lecurrency} {separator(pur.purchaseprice)}</td>
+                          <td>{pur.lecurrency} {separator(pur.purchaseprice * pur.purchasetimes)}</td>
                         </tr>
                       ))
 

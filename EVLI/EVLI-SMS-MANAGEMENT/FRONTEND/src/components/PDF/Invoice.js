@@ -68,7 +68,7 @@ const Invoice = (props) => {
 
                         </View>
                         <View style={{ flexDirection: "column", alignItems: "start" }}>
-                            <Text style={{ fontSize: 9, fontWeight: "bold", marginHorizontal: 4, marginTop: 2 }}>EVLI{passportidg} </Text>
+                            <Text style={{ fontSize: 9, fontWeight: "bold", marginHorizontal: 4, marginTop: 2, textTransform: 'uppercase' }}>EVLI{passportidg} </Text>
                             <Text style={{ fontSize: 9, fontWeight: "bold", marginHorizontal: 4, marginTop: 2 }}>{+day + "/" + month + "/" + year} </Text>
                         </View>
                     </View>

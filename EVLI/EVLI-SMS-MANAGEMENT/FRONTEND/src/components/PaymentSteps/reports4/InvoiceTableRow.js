@@ -78,10 +78,10 @@ const InvoiceTableRow = ({items}) => {
         )}
         {items && items.purchaselist.length > 0 && items.purchaselist.map( (item, index) => 
             <View style={styles.row} key={index}>
-                <Text style={styles.qty}>1</Text>
+                <Text style={styles.qty}>{item.purchasetimes}</Text>
                 <Text style={styles.description}>{item.purchasedescription}</Text>
                 <Text style={styles.rate}>{item.lecurrency} {separator((item.purchaseprice).toFixed(2))}</Text>
-                <Text style={styles.amount}>{item.lecurrency} {separator((item.purchaseprice).toFixed(2))}</Text>
+                <Text style={styles.amount}>{item.lecurrency} {separator((item.purchaseprice * item.purchasetimes).toFixed(2))}</Text>
             </View>
         )}
         {items && items.otherlist.length > 0 && items.otherlist.map( (item, index) => 
@@ -94,10 +94,10 @@ const InvoiceTableRow = ({items}) => {
         )}
         {items && items.accolist.length > 0 && items.accolist.map( (item, index) => 
             <View style={styles.row} key={index}>
-                <Text style={styles.qty}>{item.accotimes}</Text>
+                <Text style={styles.qty}>{item.acotimes}</Text>
                 <Text style={styles.description}>{item.accodescription}</Text>
-                <Text style={styles.rate}>{item.lecurrency} {separator((item.accoprice * item.accotimes).toFixed(2))}</Text>
-                <Text style={styles.amount}>{item.lecurrency} {separator((item.accoprice).toFixed(2))}</Text>
+                <Text style={styles.rate}>{item.lecurrency} {separator((item.accoprice).toFixed(2))}</Text>
+                <Text style={styles.rate}>{item.lecurrency} {separator((item.accoprice * item.acotimes).toFixed(2))}</Text>
             </View>
         )}
         </> 

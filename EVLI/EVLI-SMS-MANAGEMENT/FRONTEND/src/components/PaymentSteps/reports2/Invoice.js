@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     page: {
         fontFamily: 'Helvetica',
         fontSize: 11,
-        paddingTop: 30,
+        paddingTop: 0,
         paddingLeft:40,
         paddingRight:40,
         lineHeight: 1.5,
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   
   const Invoice = ({studentData}) => (
             <Document>
-                <Page size="A4" style={styles.page}>
+                <Page size="A3" scale={0.2} style={styles.page}>
                     <BillTo title='OFFICIAL RECEIPT' studentData={studentData}/>
                     <InvoiceItemsTable studentData={studentData} />
                     <InvoiceThankYouMsg />
