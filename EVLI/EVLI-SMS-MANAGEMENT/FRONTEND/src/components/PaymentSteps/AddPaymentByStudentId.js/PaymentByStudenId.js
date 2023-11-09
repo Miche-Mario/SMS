@@ -173,22 +173,7 @@ useEffect(() => {
                   <div className='text-xl font-medium'>Receiving from:</div>
                   <div className='ml-4 font-bold text-xl uppercase'>{student && student.forenamesg} {student && student.surnameg}</div>
                 </div>
-                <p className='ml-[9.5rem] text-lg uppercase'>
-               {/*    {invoicedata && invoicedata[0].courselist.length > 0 && invoicedata[0].courselist[0].lesubcoursename}
-                  {invoicedata && invoicedata[0].courselist.length > 0 && " ENGLISH PROGRAMS"}
-                  {invoicedata && invoicedata[0].courselist.length > 1 && "WITH "}
-                  {invoicedata && invoicedata[0].courselist.length > 1 && invoicedata[0].courselist[1].lesubcoursename}
-                  {invoicedata && invoicedata[0].courselist.length > 1 && " PREPARATIONS"}
-                  {invoicedata && invoicedata[0].courselist.length > 2 && " WITH " + invoicedata[0].courselist[2].laduration + " WEEKS COMPUTER LITERACY"}
-                  {invoicedata && invoicedata[0].courselist.length > 0 && " WITH "}
-                  {invoicedata && invoicedata[0].examlist.length > 0 && invoicedata[0].examlist[0].lexamname}
-                  {invoicedata && invoicedata[0].accolist.length > 0 && " WITH " + invoicedata[0].accolist[0].acotimes + " WEEKS ACCOMODATION"}
-
-
- */}
-
-
-                </p>
+              
               </div>
               <br />
                 <table className="table-bordered">
@@ -300,7 +285,7 @@ useEffect(() => {
                 </table>
                 <br />
                 <div className='flex flex-row items-center'>
-                  <h3 className="heading">Payment Mode:</h3>
+                  <h3 className="heading">Method of payment:</h3>
                   <select id="countries" className="ml-3 3bg-gray-50 mb-4   text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2.5"
                     required
                     onClick={(e)=> setPaymentmethodd(e.target.value)}
@@ -315,7 +300,7 @@ useEffect(() => {
                 </div>
 
                 <div className='flex flex-row items-center'>
-                  <h3 className="heading w-[13rem]">Payment Mode details:</h3>
+                  <h3 className="heading w-[13rem]">Method of payment detail:</h3>
                   <textarea rows={4} cols={6} type="text"  className="ml-3 3bg-gray-50 mb-4   text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[15rem] p-1"
                     name='paymentmethoddetails'
                     value={paymentmethoddetails}

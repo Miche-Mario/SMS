@@ -64,7 +64,6 @@ const CoursesPurchasesExam = () => {
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
-        console.log(msg)
       }
     }
   }
@@ -103,7 +102,6 @@ const CoursesPurchasesExam = () => {
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
-        console.log(msg)
       }
     }
   }
@@ -133,7 +131,6 @@ const CoursesPurchasesExam = () => {
       } catch (error) {
         if (error.response) {
           setMsg(error.response.data.msg);
-          console.log(msg)
         }
       }
     }
@@ -165,15 +162,15 @@ const CoursesPurchasesExam = () => {
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
-        console.log(msg)
       }
     }
   }
+  console.log("purcheseID" +purchaseid);
 
-  useEffect(() =>{
+/*   useEffect(() =>{
     getPurchasePrice()}
     , [purchaseid])
-
+ */
 
   const [registrationprice, setRegistrationprice] = useState(0);
   const [registrationname, setRegistrationname] = useState();
@@ -261,7 +258,6 @@ const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/registration
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
-        console.log(msg)
       }
     }
   }
@@ -514,12 +510,14 @@ const getAccoDiscounts = async () => {
       uuid,
       purchasepriceid
     }
-    if(purchaseprice && purchasetimes ){   
+  
        setPurchaseList([...purchaseList, apurchase]);
-    }   else {
-      toast.error("Something went wrong!")
-    }
+      
+   
   }
+  console.log("name: " + lepurchasename);
+  console.log("price: " + purchaseprice);
+  console.log("priceId: " + purchasepriceid);
 
   const addOtherFee = (e) => {
     e.preventDefault(e);
@@ -664,6 +662,7 @@ const getAccoDiscounts = async () => {
     var selectedValue = lepurchase.value;
     setPurchaseButtonActif(false)
       setLePurchaseName(selectedText);
+      setPurchaseId(selectedValue)
   
   }
 
@@ -920,7 +919,6 @@ function separator(numb) {
 }
 
 
-console.log( examprice && examprice);
 const [currencies, setCurrencies] = useState([]);
 
 const getCurrencies = async () => {
@@ -933,7 +931,6 @@ useEffect(() => {
 }, [])
 
 
-console.log(optionid)
 
   return (
     <div className='flex flex-row w-full'>
@@ -1106,7 +1103,6 @@ console.log(optionid)
         focus:border-blue-500 block w-[32rem]"
               id="lepurchase"
               onChange={(e) => { handleChangePurchase(); setPurchaseId(e.target.value) }}
-              onClick={getPurchasePrice}
               >
                 <option value="" className='text-md'></option>
                 {item.map((item) => (
@@ -1114,7 +1110,7 @@ console.log(optionid)
                 ))}
               </select>
             </div>
-            <button disabled={purchaseButtonActif} className=' cursor-pointer' onClick={addPurchase}>
+            <button  className=' cursor-pointer' onClick={addPurchase}>
               <MdOutlineAddToPhotos style={{ fontSize: "45px", color: "green" }} />
             </button>
 
@@ -1122,7 +1118,8 @@ console.log(optionid)
           <select class="bg-blue-100 border border-gray-300 text-gray-900 mt-3 text-xl p-2 
         focus:ring-blue-500 
         focus:border-blue-500 block w-[20rem]"
-               
+        onClick={getPurchasePrice}
+
                 onChange={(e) => {setPurchaseTimes(e.target.value); setPurchaseButtonActif(false)}}
               >
                 <option value="0" className='text-md'></option>

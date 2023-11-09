@@ -25,37 +25,22 @@ const Invoice = db.define('invoice', {
     courselist:{
         type: DataTypes.JSON,
         allowNull: true,
-        validate:{
-            notEmpty: false        
-        }
     },
     examlist:{
         type: DataTypes.JSON,
         allowNull: true,
-        validate:{
-            notEmpty: false        
-        }
     },
     purchaselist:{
         type: DataTypes.JSON,
         allowNull: true,
-        validate:{
-            notEmpty: false        
-        }
     },
     accolist:{
         type: DataTypes.JSON,
         allowNull: true,
-        validate:{
-            notEmpty: false        
-        }
     },
     otherlist:{
         type: DataTypes.JSON,
         allowNull: true,
-        validate:{
-            notEmpty: false        
-        }
     },
     currency:{
         type: DataTypes.JSON,

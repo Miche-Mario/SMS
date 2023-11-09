@@ -196,22 +196,43 @@ const updatePayment = async (e) => {
                   <div className='text-xl font-medium'>Received from:</div>
                    <div className='ml-4 font-bold text-xl uppercase'>{studentData && studentData.forenamesg} {studentData && studentData.surnameg}</div> 
                 </div>
-                <p className='ml-[9.5rem] text-lg uppercase'>
-                  {invoicedata && invoicedata.courselist.length > 0 && invoicedata.courselist[0].lesubcoursename}
-                  {invoicedata && invoicedata.courselist.length > 0 && " ENGLISH PROGRAMS"}
-                  {invoicedata && invoicedata.courselist.length > 1 && "WITH "}
-                  {invoicedata && invoicedata.courselist.length > 1 && invoicedata.courselist[1].lesubcoursename}
-                  {invoicedata && invoicedata.courselist.length > 1 && " PREPARATIONS"}
-                  {invoicedata && invoicedata.courselist.length > 2 && " WITH " + invoicedata.courselist[2].laduration + " WEEKS COMPUTER LITERACY"}
-                  {invoicedata && invoicedata.courselist.length > 0 && " WITH "}
-                  {invoicedata && invoicedata.examlist.length > 0 && invoicedata.examlist[0].lexamname}
-                  {invoicedata && invoicedata.accolist.length > 0 && " WITH " + invoicedata.accolist[0].acotimes + " WEEKS ACCOMODATION"}
+           
+                <div className='ml-[9.5rem] text-lg'>
+                {invoicedata && invoicedata.courselist.length > 0 &&
+                 <p>
+                <span className=' text-lg'>Course:</span>
+                   <span className='ml-3 mt-1 text-md lowercase'>
+                   
+                     {invoicedata && invoicedata.courselist.length > 0 && invoicedata.courselist.laduration + " "} 
+                      Months of English
+                     {invoicedata && invoicedata.courselist.length > 1 && " + " + invoicedata.courselist[1].lecoursename}
+                 
+                   </span>
+                 </p>
+                }
+                 <p>
+                   <span className=' text-lg'>PURCHASE:</span>
+                   <span className='ml-3 mt-1 text-md lowercase'>
+                   
+                     {invoicedata && invoicedata.purchaselist.length > 0 && invoicedata.purchaselist.map(objet => objet.purchasedescription).join(' + ')}
+                 
+                   </span>
+                 </p>
+
+                 <p>
+                   <span className=' text-lg'>ACCOMMODATION:</span>
+                   <span className='ml-3 mt-1 text-md lowercase'>
+                   
+                     {invoicedata && invoicedata.purchaselist.length > 0 && invoicedata.accolist.map(objet => objet.lacconame).join(' + ')}
+                 
+                   </span>
+                 </p>
+                 
 
 
 
 
-
-                </p>
+               </div>
               </div>
               <br />
               <form onSubmit={click}>
@@ -351,7 +372,7 @@ const updatePayment = async (e) => {
                 </table>
                 <br />
                 <div className='flex flex-row items-center'>
-                  <h3 className="heading">Payment Mode:</h3>
+                  <h3 className="heading">Method of payment:</h3>
                   <select id="countries" className="ml-3 3bg-gray-50 mb-4   text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2.5"
                     required
                     onChange={(e)=> setPaymentmethodd(e.target.value)}
@@ -366,7 +387,7 @@ const updatePayment = async (e) => {
                 </div>
 
                 <div className='flex flex-row items-center'>
-                  <h3 className="heading w-[13rem]">Payment Mode details:</h3>
+                  <h3 className="heading w-[13rem]">Method of payment details:</h3>
                   <textarea rows={4} cols={6} type="text"  className="ml-3 3bg-gray-50 mb-4   text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[15rem] p-1"
                     name='paymentmethoddetails'
                     value={paymentmethoddetails}

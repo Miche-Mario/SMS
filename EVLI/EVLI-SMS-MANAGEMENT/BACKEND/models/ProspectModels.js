@@ -370,7 +370,18 @@ const Prospect = db.define('prospect', {
             notEmpty: false,
         }
     },
-    
+    cpname: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    cpemail: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    cpphone: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
     
 },{
     freezeTableName: true

@@ -30,18 +30,20 @@ const InvoiceItemsTable = ({ studentData }) => (
           <Text style={{textTransform: "uppercase", fontSize: 10}}>{studentData &&  studentData.surnameg} {studentData && studentData.forenamesg}</Text>
         </View>
       </View>
-      <View style={{width: "70%"}}>
-        <Text style={{textTransform: "uppercase", marginLeft: "15%", fontSize: 9}}>
-          {studentData && studentData.courseList.length > 0 && studentData.courseList[0].lesubcoursename}
-          {studentData && studentData.courseList.length > 0 && " ENGLISH PROGRAMS"}
-          {studentData && studentData.courseList.length > 1 && "WITH "}
-          {studentData && studentData.courseList.length > 1 && studentData.courseList[1].lesubcoursename}
-          {studentData && studentData.courseList.length > 1 && " PREPARATIONS"}
-          {studentData && studentData.courseList.length > 2 && " WITH " + studentData.courseList[2].laduration + " WEEKS COMPUTER LITERACY"}
-          {studentData && studentData.courseList.length > 0 && " WITH "}
-          {studentData && studentData.examList.length > 0 && studentData.examList[0].lexamname}
-          {studentData && studentData.accoList.length > 0 && " WITH " + studentData.accoList[0].acotimes + " WEEKS ACCOMODATION"}
-        </Text>
+      <View style={{ width: "70%" }}>
+        <View style={{ paddingLeft: 5, flexDirection: 'row', marginLeft: "15%" }}>
+          <Text style={{ marginRight: 2, fontSize: 9 }}>COURSES:</Text>
+          <Text style={{ marginLeft: 5, fontSize: 8, textTransform: 'lowercase' }}>{studentData && studentData.courseList.length >= 1 && studentData.courseList[0].laduration} Months of Eglish
+            {studentData && studentData.courseList.length > 1 && " + " + studentData.courseList[1].lecoursename}</Text>
+        </View>
+        <View style={{ paddingLeft: 5, flexDirection: 'row', marginLeft: "15%" }}>
+          <Text style={{ marginRight: 2, fontSize: 9 }}>PURCHASES:</Text>
+          <Text style={{ marginLeft: 5, fontSize: 8 }}>{studentData && studentData.purchaseList.length > 0 && studentData.purchaseList.map(objet => objet.purchasedescription).join(' + ')}</Text>
+        </View>
+        <View style={{ paddingLeft: 5, flexDirection: 'row', marginLeft: "15%" }}>
+          <Text style={{ marginRight: 2, fontSize: 9 }}>ACCOMMODATIONS:</Text>
+          <Text style={{ marginLeft: 5, fontSize: 8 }}>{studentData && studentData.accoList.length > 0 && studentData.accoList.map(objet => objet.lacconame).join(' + ')}</Text>
+        </View>
       </View>
       
     </View>

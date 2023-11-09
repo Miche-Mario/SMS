@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
 const Invoice = (props) => {
     const { courseList, examList, purchaseList, accoList,accoDis, otherFeeList, total, subtotal, registrationList, currency, studdiscount, surnameg, addresshomeg, forenamesg, passportidg, citizenshipg, discount } = props.studentData
 
-
     function separator(numb) {
         var str = numb.toString().split(".");
         str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -36,7 +35,6 @@ const Invoice = (props) => {
 
     let text = '';
     
-
     let discountt
     discount === undefined ? discountt = 0 : discountt = discount;
 
@@ -68,7 +66,7 @@ const Invoice = (props) => {
 
                         </View>
                         <View style={{ flexDirection: "column", alignItems: "start" }}>
-                            <Text style={{ fontSize: 9, fontWeight: "bold", marginHorizontal: 4, marginTop: 2, textTransform: 'uppercase' }}>EVLI{passportidg} </Text>
+                            <Text style={{ fontSize: 9, fontWeight: "bold", marginHorizontal: 4, marginTop: 2, textTransform: 'uppercase' }}>EVLI{passportidg}{props.make} </Text>
                             <Text style={{ fontSize: 9, fontWeight: "bold", marginHorizontal: 4, marginTop: 2 }}>{+day + "/" + month + "/" + year} </Text>
                         </View>
                     </View>
@@ -95,29 +93,42 @@ const Invoice = (props) => {
                     <View style={{ backgroundColor: "#E7F0FF", color: "black", marginHorizontal: 30, flexDirection: "row", alignItems: 'center' }}>
                         
                         <View style={{ width: 430 }}>
-                            <Text style={{ fontSize: 10, paddingLeft: 5 }}>
-                                <Text style={{ textTransform: "uppercase", marginLeft: "15%", fontSize: 9 }}>
-
-                                {courseList.length === 1  && courseList[0].coursedescription}
-
-                                {courseList.length > 1 && courseList[0].coursedescription}
-                                {courseList.length >= 2 && " WITH "}
-                                {courseList.length >= 2 && courseList[1].coursedescription}
-                                {courseList.length >= 2 && " PREPARATIONS"}
-                                {courseList.length >= 3 && " WITH "}
-                                {courseList.length >= 3 && courseList[2].laduration + " WEEKS COMPUTER LITERACY"}
-
-                                { courseList.length > 0 && examList.length > 0 && " WITH "}
-                                {examList.length > 0 && examList[0].examdescription}
-
-                                {((courseList.length > 0 || examList.length > 0) && accoList.length > 0)&& " WITH "}
-                                {accoList.length > 0 && accoList[0].acotimes + " MONTHS ACCOMMODATION"}
-
-                                </Text>
-                            </Text>
+                            <View style={{paddingLeft: 5, flexDirection: 'row' }}>
+                                <Text style={{ marginRight: 2, fontSize: 9 }}>COURSES:</Text>
+                                <Text style={{ marginLeft: 5, fontSize: 8, textTransform: 'lowercase' }}>{courseList.length >= 1  && courseList[0].laduration} Months of English
+                                 {courseList.length > 1 && " + " + courseList[1].lecoursename}</Text>
+                            </View>
                         </View>
                         <View style={{ width: 150 }}>
                             <Text style={{ fontSize: 9 }}>Due Upon Receipt</Text>
+                        </View>
+                        <View style={{ width: 150 }}>
+                            <Text style={{ fontSize: 9 }}></Text>
+                        </View>
+                    </View>
+                    <View style={{ backgroundColor: "#E7F0FF", color: "black", marginHorizontal: 30, flexDirection: "row", alignItems: 'center' }}>
+                        
+                        <View style={{ width: 430, paddingTop: 3 }}>
+                        <View style={{paddingLeft: 5, flexDirection: 'row' }}>
+                                <Text style={{ marginRight: 2, fontSize: 9 }}>PURCHASES:</Text>
+                                <Text style={{ marginLeft: 5, fontSize: 8 }}>{purchaseList.map(objet => objet.purchasedescription).join(' + ')}</Text>
+                            </View>
+                        </View>
+                        <View style={{ width: 150 }}>
+                        </View>
+                        <View style={{ width: 150 }}>
+                            <Text style={{ fontSize: 9 }}></Text>
+                        </View>
+                    </View>
+                    <View style={{ backgroundColor: "#E7F0FF", color: "black", marginHorizontal: 30, flexDirection: "row", alignItems: 'center' }}>
+                        
+                        <View style={{ width: 430, paddingTop: 3 }}>
+                        <View style={{paddingLeft: 5, flexDirection: 'row' }}>
+                                <Text style={{ marginRight: 2, fontSize: 9 }}>ACCOMMODATIONS:</Text>
+                                <Text style={{ marginLeft: 5, fontSize: 8 }}>{accoList.map(objet => objet.lacconame).join(' + ')}</Text>
+                            </View>
+                        </View>
+                        <View style={{ width: 150 }}>
                         </View>
                         <View style={{ width: 150 }}>
                             <Text style={{ fontSize: 9 }}></Text>
@@ -205,7 +216,7 @@ const Invoice = (props) => {
 
                     {purchaseList !== 0 &&
                         purchaseList.map((item, index) => (
-                            <View style={[index % 2 === 0 && styles.line2, index % 2 !== 0 && styles.line1]}>
+                            <View style={ styles.line1} key={index}>
                                 <View style={{ width: 150 }}>
                                     <Text style={{ fontSize: 9, paddingLeft: 5 }}>{item.purchasetimes}</Text>
                                 </View>

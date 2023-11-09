@@ -30,19 +30,22 @@ const InvoiceItemsTable = ({ studentData }) => (
         <Text style={{textTransform: "uppercase", fontSize: 10}}>{studentData && studentData.surnameg && studentData.surnameg} {studentData && studentData.forenamesg && studentData.forenamesg}</Text>
         </View>
       </View>
-      <View style={{width: "70%"}}>
-        <Text style={{textTransform: "uppercase", marginLeft: "15%", fontSize: 9}}>
-          {studentData.invoicedata && studentData.invoicedata.courselist.length > 0 && studentData.invoicedata.courselist[0].lesubcoursename}
-          {studentData.invoicedata && studentData.invoicedata.courselist.length > 0 && " ENGLISH PROGRAMS"}
-          {studentData.invoicedata && studentData.invoicedata.courselist.length > 1 && "WITH "}
-          {studentData.invoicedata && studentData.invoicedata.courselist.length > 1 && studentData.invoicedata.courselist[1].lesubcoursename}
-          {studentData.invoicedata && studentData.invoicedata.courselist.length > 1 && " PREPARATIONS"}
-          {studentData.invoicedata && studentData.invoicedata.courselist.length > 2 && " WITH " + studentData.invoicedata.courselist[2].laduration + " WEEKS COMPUTER LITERACY"}
-          {studentData.invoicedata && studentData.invoicedata.courselist.length > 0 && " WITH "}
-          {studentData.invoicedata && studentData.invoicedata.examlist.length > 0 && studentData.invoicedata.examlist[0].lexamname}
-          {studentData.invoicedata && studentData.invoicedata.accolist.length > 0 && " WITH " + studentData.invoicedata.accolist[0].acotimes + " WEEKS ACCOMMODATION"}
-        </Text>
+      <View style={{ width: "70%" }}>
+        <View style={{ paddingLeft: 5, flexDirection: 'row', marginLeft: "15%" }}>
+          <Text style={{ marginRight: 2, fontSize: 9 }}>COURSES:</Text>
+          <Text style={{ marginLeft: 5, fontSize: 8, textTransform: 'lowercase' }}>{studentData.invoicedata && studentData.invoicedata.courselist.length >= 1 && studentData.invoicedata.courselist[0].laduration} Months of Eglish
+            {studentData.invoicedata && studentData.invoicedata.courselist.length > 1 && " + " + studentData.invoicedata.courselist[1].lecoursename}</Text>
+        </View>
+        <View style={{ paddingLeft: 5, flexDirection: 'row', marginLeft: "15%" }}>
+          <Text style={{ marginRight: 2, fontSize: 9 }}>PURCHASES:</Text>
+          <Text style={{ marginLeft: 5, fontSize: 8 }}>{studentData.invoicedata && studentData.invoicedata.purchaselist.length > 0 && studentData.invoicedata.purchaselist.map(objet => objet.purchasedescription).join(' + ')}</Text>
+        </View>
+        <View style={{ paddingLeft: 5, flexDirection: 'row', marginLeft: "15%" }}>
+          <Text style={{ marginRight: 2, fontSize: 9 }}>ACCOMMODATIONS:</Text>
+          <Text style={{ marginLeft: 5, fontSize: 8 }}>{studentData.invoicedata && studentData.invoicedata.accolist.length > 0 && studentData.invoicedata.accolist.map(objet => objet.lacconame).join(' + ')}</Text>
+        </View>
       </View>
+      
       
     </View>
     <View style={styles.tableContainer}>

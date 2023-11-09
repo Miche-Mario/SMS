@@ -26,7 +26,13 @@ const styles = StyleSheet.create({
 });
 
 
-const BillTo = ({ studentData, title}) => (
+const BillTo = ({ studentData, title}) => {
+    var date = new Date();
+
+    var day = date.getDate();
+var month = date.getMonth() + 1;
+var year = date.getFullYear();
+return (
     <>
         <View style={styles.headerContainer}>
             <View style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
@@ -44,16 +50,17 @@ const BillTo = ({ studentData, title}) => (
                 </View>
                 <View style={{display: "flex",flexDirection: "column", justifyContent: "flex-end", alignItems: 'flex-end'}}>
                     <View>
-                        <Text style={{fontSize: 9}}>Tuesday, June 21, 2022</Text>
+                        <Text style={{fontSize: 9}}>{+day + "/" + month + "/" + year}</Text>
                     </View>
                     <View>
-                        <Text style={{fontSize: 9}}>EVLI-6-003848</Text>
+                        <Text style={{fontSize: 9}}>{studentData.studentid}</Text>
                     </View>
                 </View>
             </View>
             
         </View>
     </>
-);
+    )
+};
 
 export default BillTo

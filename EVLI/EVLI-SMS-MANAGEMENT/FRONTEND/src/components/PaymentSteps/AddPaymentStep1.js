@@ -230,22 +230,41 @@ const AddPaymentStep1 = ({ open, setOpen }) => {
                   <div className='text-xl font-medium'>Received from:</div>
                   <div className='ml-4 font-bold text-xl uppercase'>{prospectdata && prospectdata.forenamesg} {prospectdata && prospectdata.surnameg}</div>
                 </div>
-                <p className='ml-[9.5rem] text-lg uppercase'>
-                  {invoicedata && invoicedata[0].courselist.length > 0 && invoicedata[0].courselist[0].lesubcoursename}
-                  {invoicedata && invoicedata[0].courselist.length > 0 && " ENGLISH PROGRAMS"}
-                  {invoicedata && invoicedata[0].courselist.length > 1 && "WITH "}
-                  {invoicedata && invoicedata[0].courselist.length > 1 && invoicedata[0].courselist[1].lesubcoursename}
-                  {invoicedata && invoicedata[0].courselist.length > 1 && " PREPARATIONS"}
-                  {invoicedata && invoicedata[0].courselist.length > 2 && " WITH " + invoicedata[0].courselist[2].laduration + " WEEKS COMPUTER LITERACY"}
-                  {invoicedata && invoicedata[0].courselist.length > 0 && " WITH "}
-                  {invoicedata && invoicedata[0].examlist.length > 0 && invoicedata[0].examlist[0].lexamname}
-                  {invoicedata && invoicedata[0].accolist.length > 0 && " WITH " + invoicedata[0].accolist[0].acotimes + " WEEKS ACCOMODATION"}
+                <div className='ml-[9.5rem] text-lg'>
+                {invoicedata && invoicedata[0].courselist.length > 0 &&
+                  <p>
+                    <span className=' text-lg'>Course:</span>
+                    <span className='ml-3 mt-1 text-md lowercase'>
+                    
+                      {invoicedata && invoicedata[0].courselist.length > 0 && invoicedata[0].courselist[0].laduration + " "} 
+                       Months of English
+                      {invoicedata && invoicedata[0].courselist.length > 1 && " + " + invoicedata[0].courselist[1].lecoursename}
+                  
+                    </span>
+                  </p>}
+                  <p>
+                    <span className=' text-lg'>PURCHASE:</span>
+                    <span className='ml-3 mt-1 text-md lowercase'>
+                    
+                      {invoicedata && invoicedata[0].purchaselist.length > 0 && invoicedata[0].purchaselist.map(objet => objet.purchasedescription).join(' + ')}
+                  
+                    </span>
+                  </p>
+
+                  <p>
+                    <span className=' text-lg'>ACCOMMODATION:</span>
+                    <span className='ml-3 mt-1 text-md lowercase'>
+                    
+                      {invoicedata && invoicedata[0].purchaselist.length > 0 && invoicedata[0].accolist.map(objet => objet.lacconame).join(' + ')}
+                  
+                    </span>
+                  </p>
+                  
 
 
 
 
-
-                </p>
+                </div>
               </div>}
               <br />
               <form>
@@ -370,7 +389,7 @@ const AddPaymentStep1 = ({ open, setOpen }) => {
                 </table>
                 <br />
                 <div className='flex flex-row items-center'>
-                  <h3 className="heading  w-[13rem]">Payment Mode:</h3>
+                  <h3 className="heading  w-[13rem]">Method of Payment:</h3>
                   <select id="countries" className="ml-3 3bg-gray-50 mb-4   text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2.5"
                     required
                     onChange={(e) => setPaymentmethodd(e.target.value)}
@@ -389,7 +408,7 @@ const AddPaymentStep1 = ({ open, setOpen }) => {
 
 
                 <div className='flex flex-row items-center'>
-                  <h3 className="heading w-[13rem]">Payment Mode details:</h3>
+                  <h3 className="heading w-[13rem]">Method of payment details:</h3>
                   <textarea rows={4} cols={6} type="text"  className="ml-3 3bg-gray-50 mb-4   text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[15rem] p-1"
                     name='paymentmethoddetails'
                     value={paymentmethoddetails}

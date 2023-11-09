@@ -34,7 +34,7 @@ export const createInvoice = async(req,res) => {
                 if(!response) {
     try {
              await Invoice.create({
-            courselist: courselist ,
+            courselist: courselist,
             examlist: examlist,
             purchaselist: purchaselist,
             accolist: accolist,

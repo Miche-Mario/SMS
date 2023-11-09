@@ -21,13 +21,36 @@ const Complete = () => {
   const { user} = useSelector(
     (state) => state.auth
   );
-
+  const makeid = (length) => {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+  const [make, setMake] = useState()
+  useEffect(() => {
+    
+    const makeid = (length) => {
+      var result           = '';
+      var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var charactersLength = characters.length;
+      for ( var i = 0; i < length; i++ ) {
+          result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
+    }
+    setMake(makeid(3))
+  },[]);
+  console.log(make);
   async function saveProspect(e) {
     e.preventDefault();
     try {
         setIsDisabled(true)
         await axios.post(`${process.env.REACT_APP_BASE_URL}/prospects`, {
-        prospectid: studentData.passportidg &&  studentData.passportidg,
+        prospectid: studentData.passportidg &&  studentData.passportidg +  make,
         surnameg: studentData.surnameg && studentData.surnameg,
         forenamesg: studentData.forenamesg && studentData.forenamesg,
         genderg: studentData.genderg &&  studentData.genderg,
@@ -90,7 +113,6 @@ const Complete = () => {
   let discountt
   studentData.discount  ?  discountt = studentData.discount : discountt = 0 ;
   const dis = discountt + studentData.accoDis
-console.log(dis);
 
   async function saveInvoice(e) {
     e.preventDefault();
@@ -101,7 +123,7 @@ console.log(dis);
 
       try {
          await axios.post(`${process.env.REACT_APP_BASE_URL}/invoice`, {
-          prospectid: studentData.passportidg &&  studentData.passportidg,
+          prospectid: studentData.passportidg &&  studentData.passportidg + make,
           courselist: studentData.courseList.length > 0 ? studentData.courseList : {},
          examlist: studentData.examList.length > 0 ? studentData.examList : {},
          purchaselist:  studentData.purchaseList.length > 0 ? studentData.purchaseList : {},
@@ -113,7 +135,7 @@ console.log(dis);
          total: studentData.total && studentData.total,
          subtotal: studentData.subtotal && studentData.subtotal,
          studdiscount: studentData.studdiscount && studentData.studdiscount,
-         invoicecode: studentData.passportidg &&  studentData.passportidg,
+         invoicecode: studentData.passportidg &&  studentData.passportidg + make,
        });
 
        toast.success("Invoice well created") 
@@ -154,11 +176,10 @@ console.log(dis);
             width: '100%',
             height: 500,
             backgroundColor: "white"
-      
           }}
         
         >
-        <Invoice studentData={studentData}/>
+        <Invoice make={make}  studentData={studentData}/>
 
         </PDFViewer>
 

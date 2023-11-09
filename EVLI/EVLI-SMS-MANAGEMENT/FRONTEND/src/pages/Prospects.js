@@ -28,7 +28,7 @@ const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
-  width: 500,
+  width: 1000,
   transform: 'translate(-50%, -50%)',
   bgcolor: 'background.paper',
   border: '2px solid darkblue',
@@ -181,6 +181,12 @@ const getAbouts = async () => {
   const [aboutidg, setAboutidg] = useState()
   const [startdate, setStartdate] = useState()
   const [coursewish, setCoursewish] = useState()
+  const [cpname, setCpName] = useState()
+  const [cpemail, setCpEmail] = useState()
+  const [cpphone, setCpPhone] = useState()
+
+
+
 
   const [maritalg, setMaritalg] = useState()
 
@@ -202,7 +208,10 @@ const getAbouts = async () => {
             coursewish: coursewish,
             about_aboutid: aboutidg,
             isstudent: false,
-            user: user.id
+            user: user.id,
+            cpname: cpname,
+            cpemail: cpemail,
+            cpphone: cpphone,
       });
       console.log('ok');
       navigate(0);
@@ -260,36 +269,29 @@ const getAbouts = async () => {
         <Box sx={style} >
           <p class="text-white text-xl p-3  bg-dark-purple w-full">WAITING LIST EDIT</p>
           <form onSubmit={saveProspect}>
-            <div className='flex flex-row m-3 justify-around items-center'>
-              <div className=''>
-                <label for="first_name" class="block mb-6 text-base font-medium text-gray-900 p-1">Surname</label>
-                <label for="first_name" class="block mb-5 text-base font-medium text-gray-900 p-1">Forenames</label>
-                <label for="first_name" class="block mb-5 text-base font-medium text-gray-900 p-1">Gender</label>
-                <label for="first_name" class="block mb-5 text-base font-medium text-gray-900 p-1">Marital Status</label>
-                <label for="first_name" class="block mb-5 text-base font-medium text-gray-900 p-1">CoCiti</label>
-                <label for="first_name" class="block mb-5 text-base font-medium text-gray-900 p-1">Enquery date</label>
-                <label for="first_name" class="block mb-5 text-base font-medium text-gray-900 p-1">Email</label>
-                <label for="first_name" class="block mb-5 text-base font-medium text-gray-900 p-1">Phone</label>
-                <label for="first_name" class="block mb-5 text-base font-medium text-gray-900 p-1">Course</label>
-                <label for="first_name" class="block mb-5 text-base font-medium text-gray-900 p-1">How did you hear about us ?</label>
-
-
-
-              </div>
-              <div >
+            <div className='justify-center px-12 grid grid-cols-2 gap-4 '>
+              <div className=' flex items-center justify-center mt-4'>
+                <p  class="   text-left text-base mr-11 pb-3 font-medium text-gray-900 w-1/2 ">Surname:</p>
                 <input                 
-                  onChange={(e) => setSurnameg(e.target.value) }
-                  type="text" id="first_name" 
-                  class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-1.5 " placeholder="surname" 
-                />
+                    onChange={(e) => setSurnameg(e.target.value) }
+                    type="text" id="first_name" 
+                    class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm w-full rounded-lg focus:ring-blue-500 focus:border-blue-500   p-1.5 " placeholder="surname" 
+                  />
+              </div>
+
+              <div className=' flex items-center justify-center mt-4'>
+                <p  class="   text-left text-base mr-11 pb-3 font-medium text-gray-900 w-1/2 ">Forenames:</p>
                 <input 
                   onChange={(e) => setForenamesg(e.target.value) }
                   type="text" id="first_name" 
-                  class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-1.5 " 
+                  class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 " 
                   placeholder="forenames" 
                 />
-                
-                <select type="text" id="marital" class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-1.5 " placeholder="" required
+              </div>
+
+              <div className=' flex items-center justify-center mt-4'>
+                <p  class="   text-left text-base mr-11 pb-3 font-medium text-gray-900 w-1/2 ">Gender:</p>
+                <select type="text" id="marital" class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 " placeholder="" required
                   onChange={(e) => setGenderg(e.target.value) }
                   name="maritalg"
                 >
@@ -298,9 +300,10 @@ const getAbouts = async () => {
                   <option value="female">Female</option>
                   <option value="other">Other</option>
                 </select>   
-
-
-                <select type="text" id="marital" class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-1.5 " placeholder="" required
+              </div>
+              <div className=' flex items-center justify-center mt-4'>
+                <p  class="   text-left text-base mr-11 pb-3 font-medium text-gray-900 w-1/2 ">Marital Status:</p>
+                <select type="text" id="marital" class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 " placeholder="" required
                   onChange={(e) => setMaritalg(e.target.value) }
                   name="maritalg"
                 >
@@ -310,9 +313,11 @@ const getAbouts = async () => {
                       <option value={marital}>{marital}</option>
                     ))
                   }
-                </select>                
-                
-                <select type="text" id="Citizenship" class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-1.5 " placeholder="" required
+                </select>     
+              </div>
+              <div className=' flex items-center justify-center mt-4'>
+                <p  class="   text-left text-base mr-11 pb-3 font-medium text-gray-900 w-1/2 ">CoCiti:</p>
+                <select type="text" id="Citizenship" class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 " placeholder="" required
                   onChange={(e) => setCitizenship(e.target.value) }
                   name="citizenshipg"
                 >
@@ -322,29 +327,42 @@ const getAbouts = async () => {
                       <option value={citi}>{citi}</option>
                     ))
                   }
-                </select>
+                </select>   
+              </div>
+              <div className=' flex items-center justify-center mt-4'>
+                <p  class="   text-left text-base mr-11 pb-3 font-medium text-gray-900 w-1/2 ">Enquiry date:</p>
                 <input 
                   onChange={(e) => setStartdate(e.target.value) }
                   type="date" 
                   id="first_name" 
-                  class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-1.5 " 
+                  class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 " 
                   placeholder="name" 
                 />
+              </div>
+              <div className=' flex items-center justify-center mt-4'>
+                <p  class="   text-left text-base mr-11 pb-3 font-medium text-gray-900 w-1/2 ">Email</p>
                 <input 
                   onChange={(e) => setEmailg(e.target.value) }
                   type="email" 
                   id="first_name" 
-                  class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-1.5 " 
+                  class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 " 
                   placeholder="email"
                 />
+              </div>
+
+              <div className=' flex items-center justify-center mt-4'>
+                <p  class="   text-left text-base mr-11 pb-3 font-medium text-gray-900 w-1/2 ">Phone</p>
                 <input 
                   onChange={(e) => setTelhomeg(e.target.value) }
                   type="text" 
                   id="first_name" 
-                  class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-1.5 " 
+                  class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 " 
                   placeholder="phone" 
                 />
-                
+              </div>
+
+              <div className=' flex items-center justify-center mt-4'>
+                <p  class="   text-left text-base mr-11 pb-3 font-medium text-gray-900 w-1/2 ">Course</p>
                 <select 
                   id="lecourse" 
                   onChange={handleCourseChange} 
@@ -357,7 +375,45 @@ const getAbouts = async () => {
                     ))
                   }
                 </select>
-             
+              </div>
+        {/*  ////////////////////////////////TO ADD ////////////////////////////////////////////////////////////////*/}              
+              <div className=' flex items-center justify-center mt-4'>
+                <p  class="   text-left text-base mr-11 pb-3 font-medium text-gray-900 w-1/2 ">CP. Name</p>
+                <input 
+                  onChange={(e) => setCpName(e.target.value) }
+                  type="text" 
+                  id="first_name" 
+                  class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 " 
+                  placeholder="phone" 
+                />
+              </div>
+
+              <div className=' flex items-center justify-center mt-4'>
+                <p  class="   text-left text-base mr-11 pb-3 font-medium text-gray-900 w-1/2 ">CP. Email</p>
+                <input 
+                  onChange={(e) => setCpEmail(e.target.value) }
+                  type="text" 
+                  id="first_name" 
+                  class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 " 
+                  placeholder="phone" 
+                />
+              </div>
+
+              <div className=' flex items-center justify-center mt-4'>
+                <p  class="   text-left text-base mr-11 pb-3 font-medium text-gray-900 w-1/2 ">CP. Phone Number</p>
+                <input 
+                  onChange={(e) => setCpPhone(e.target.value) }
+                  type="text" 
+                  id="first_name" 
+                  class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 " 
+                  placeholder="phone" 
+                />
+              </div>
+              {/*               ////////////////////////////////TO  ADD END ////////////////////////////////////////////////////////////////*/} 
+
+
+              <div className=' flex items-center justify-center mt-4'>
+                <p  class="   text-left text-base mr-11 pb-3 font-medium text-gray-900 w-1/2 ">How did you hear about us ?</p>
                 <select 
                   onChange={(e) => setAboutidg(e.target.value) }
                   id="countries" 
@@ -389,10 +445,83 @@ const getAbouts = async () => {
         open={open1}
         onClose={handleClose1}
       >
-        <Box className="center-col" sx={style1}>
+        <Box className="center-col" sx={style}>
          
             <div  className=' text-center bg-dark-purple p-2 text-white text-xl font-medium'>Prospect details</div>
-            <div className='flex flex-row m-3 justify-center items-center'>
+            <div className=' justify-center px-12 grid grid-cols-2 gap-4'>
+
+         
+            <div className=' flex items-center justify-center mt-4'>
+              <p  class="  text-2xl text-right font-bold text-gray-900 w-1/2 ">Forenames:</p>
+              <p className=" bg-dark-purple text-xl text-white text-center w-1/2 rounded-lg ml-3   py-1 px-2">{ code.forenamesg ? code.forenamesg : "No data"}</p>
+            </div>
+
+            <div className=' flex items-center justify-center mt-3'>
+              <p  class="  text-2xl text-right font-bold text-gray-900 w-1/2 ">Surname:</p>
+              <p className=" bg-dark-purple text-xl text-white text-center w-1/2 rounded-lg ml-3   py-1 px-2">{ code.surnameg ? code.surnameg : "No data"}</p>
+            </div>
+
+            <div className=' flex items-center justify-center mt-3'>
+              <p  class="  text-2xl text-right font-bold text-gray-900 w-1/2 ">Gender:</p>
+              <p className=" bg-dark-purple text-xl text-white text-center w-1/2 rounded-lg ml-3   py-1 px-2">{ code.genderg ? code.genderg : "No data"}</p>
+            </div>
+
+            <div className=' flex items-center justify-center mt-3'>
+              <p  class="  text-2xl text-right font-bold text-gray-900 w-1/2 ">Marital Status:</p>
+              <p className=" bg-dark-purple text-xl text-white text-center w-1/2 rounded-lg ml-3   py-1 px-2">{ code.maritalg ? code.maritalg : "No data"}</p>
+            </div>
+
+            <div className=' flex items-center justify-center mt-3'>
+              <p  class="  text-2xl text-right font-bold text-gray-900 w-1/2 ">Citizenship:</p>
+              <p className=" bg-dark-purple text-xl text-white text-center w-1/2 rounded-lg ml-3   py-1 px-2">{ code.citizenshipg ? code.citizenshipg : "No data"}</p>
+            </div>
+
+            <div className=' flex items-center justify-center mt-3'>
+              <p  class="  text-2xl text-right font-bold text-gray-900 w-1/2 ">Enquery date:</p>
+              <p className=" bg-dark-purple text-xl text-white text-center w-1/2 rounded-lg ml-3   py-1 px-2">{ code.startdate ? code.startdate : "No data"}</p>
+            </div>
+
+            <div className=' flex items-center justify-center mt-3'>
+              <p  class="  text-2xl text-right font-bold text-gray-900 w-1/2 ">Email address:</p>
+              <p className=" bg-dark-purple text-xl text-white text-center w-1/2 rounded-lg ml-3   py-1 px-2">{ code.emailg ? code.emailg : "No data"}</p>
+            </div>
+
+
+            <div className=' flex items-center justify-center mt-3'>
+              <p  class="  text-2xl text-right font-bold text-gray-900 w-1/2 ">Phone number:</p>
+              <p className=" bg-dark-purple text-xl text-white text-center w-1/2 rounded-lg ml-3   py-1 px-2">{ code.telhomeg ? code.telhomeg : "No data"}</p>
+            </div>
+
+           
+
+            <div className=' flex items-center justify-center mt-3'>
+              <p  class="  text-2xl text-right font-bold text-gray-900 w-1/2 ">Course:</p>
+              <p className=" bg-dark-purple text-xl text-white text-center w-1/2 rounded-lg ml-3   py-1 px-2">{ code.coursewish ? code.coursewish : "No data"}</p>
+            </div>
+            <div className=' flex items-center justify-center mt-3'>
+              <p  class="  text-2xl text-right font-bold text-gray-900 w-1/2 ">Survey:</p>
+              <p className=" bg-dark-purple text-xl text-white text-center w-1/2 rounded-lg ml-3   py-1 px-2">{ code.about ? code.about.aboutname : "No data"}</p>
+            </div>
+            
+            <div className=' flex items-center justify-center mt-3'>
+              <p  class="  text-2xl text-right font-bold text-gray-900 w-1/2 ">CP. Name:</p>
+              <p className=" bg-dark-purple text-xl text-white text-center w-1/2 rounded-lg ml-3   py-1 px-2">{ code.cpname ? code.cpname : "No data"}</p>
+            </div>
+
+            <div className=' flex items-center justify-center mt-3'>
+              <p  class="  text-2xl text-right font-bold text-gray-900 w-1/2 ">CP. Email:</p>
+              <p className=" bg-dark-purple text-xl text-white text-center w-1/2 rounded-lg ml-3   py-1 px-2">{ code.cpemail ? code.cpemail : "No data"}</p>
+            </div>
+
+
+            <div className=' flex items-center justify-center mt-3'>
+              <p  class="  text-2xl text-right font-bold text-gray-900 w-1/2 ">CP. Phone Number:</p>
+              <p className=" bg-dark-purple text-xl text-white text-center w-1/2 rounded-lg ml-3   py-1 px-2">{ code.cpphone ? code.cpphone : "No data"}</p>
+            </div>
+
+           
+           
+        {/*     <div className='flex flex-row m-3 justify-center items-center'>
               <div className=''>
                 <p  class="  text-2xl font-bold text-gray-900 p-1">Forenames:</p>
                 <p  class="mt-2 text-2xl font-bold text-gray-900 p-1">Surname:</p> 
@@ -421,6 +550,7 @@ const getAbouts = async () => {
 
 
               </div>
+              </div> */}
            
           </div>
       

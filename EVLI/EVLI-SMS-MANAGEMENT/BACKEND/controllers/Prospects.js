@@ -10,7 +10,7 @@ import Log from "../models/LogModels.js";
 export const getProspects = async (req,res) => {
     try {
         const response = await Prospect.findAndCountAll({
-            attributes: ['prospectid','coursewish','startdate','enddate','id','uuid', 'about_aboutid','passportphotographg','idscang', 'surnameg', 'forenamesg', 'dateofbirthg', 'genderg', 'citizenshipg', 'emailg', 'telhomeg'],
+            attributes: ['cpname', 'cpemail', 'cpphone','prospectid','coursewish','startdate','enddate','id','uuid', 'about_aboutid','passportphotographg','idscang', 'surnameg', 'forenamesg', 'dateofbirthg', 'genderg', 'citizenshipg', 'emailg', 'telhomeg'],
             include: [{
                 model: About
             }],
@@ -157,7 +157,7 @@ export const createProspect = async(req,res) => {
 
 export const createProspectInProspect = async(req,res) => {
 
-    const {user, prospectid,surnameg,coursewish, forenamesg, genderg, dateofbirthg, placeofbirthg, citizenshipg,occupationg, emailg, telhomeg, telghanag,addresshomeg, addressghanag, maritalg, passportidg,academiclevelg, noteg, aboutidg, surnamee, forenamese, gendere, relationshipe,occupatione, emaile, tel1e, tel2e, addresse, surnamep, forenamesp, genderp, relationshipp, occupationp, emailp, tel1p, tel2p, addressp, nameo, addresso, tel1o, emailo, contacto, tel2o, about_aboutid, startdate, enddate } = req.body;
+    const {cpname, cpemail, cpphone,user, prospectid,surnameg,coursewish, forenamesg, genderg, dateofbirthg, placeofbirthg, citizenshipg,occupationg, emailg, telhomeg, telghanag,addresshomeg, addressghanag, maritalg, passportidg,academiclevelg, noteg, aboutidg, surnamee, forenamese, gendere, relationshipe,occupatione, emaile, tel1e, tel2e, addresse, surnamep, forenamesp, genderp, relationshipp, occupationp, emailp, tel1p, tel2p, addressp, nameo, addresso, tel1o, emailo, contacto, tel2o, about_aboutid, startdate, enddate } = req.body;
     
     try {
         await Prospect.create({
@@ -170,7 +170,10 @@ export const createProspectInProspect = async(req,res) => {
             telhomeg: telhomeg,
             coursewish: coursewish,
             about_aboutid: about_aboutid,
-            isstudent: false
+            isstudent: false,
+            cpname: cpname,
+            cpemail: cpemail,
+            cpphone: cpphone,
         })
 
            ////////////////////////ADDD LOG////////////////////////
